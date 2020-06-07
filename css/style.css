@@ -60,6 +60,7 @@ body {
 .heading-primary {
   color: #fff;
   text-transform: uppercase;
+  backface-visibility: hidden; /*This is for the animation to stop moving after it finish*/
 }
 
 .heading-primary-main {
@@ -67,6 +68,11 @@ body {
   font-size: 60px;
   font-weight: 400;
   letter-spacing: 35px;
+  animation-name: moveInLeft;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+  /*animation-iteration-count: 3; The animation is repeated 3 times*/
+  /*animation-delay: 3s;*/
 }
 
 .heading-primary-sub {
@@ -74,4 +80,101 @@ body {
   font-size: 20px;
   font-weight: 400;
   letter-spacing: 15px;
+  animation-name: moveInRight;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
 }
+
+/* Animations*/
+
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+
+  80% {
+    transform: translateX(10px); /*En el 80% de la animacion va a estar pasado 20px del origen*/
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translateX( 100px);
+  }
+
+  80% {
+    transform: translateX(-10px); /*En el 80% de la animacion va a estar pasado 20px del origen*/
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* 0% is when animation begin and 100% is the state of the animation at the end*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
