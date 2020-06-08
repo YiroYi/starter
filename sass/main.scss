@@ -12,6 +12,7 @@ $color-primary-dark: #28b485;
 
 $color-grey-dark: #777;
 $color-white: #fff;
+$color-black: #000;
 
 
 /* This is for reset the default css of the browser */
@@ -44,25 +45,27 @@ body {
   clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
   /* Each point represent the corner of the page from left to side in clockwise*/
   position: relative;
+
+  &__logo-box { // Means .header
+    position: absolute;
+    top: 40px;
+    left: 40px;
+  }
+
+  &__logo {
+    height: 35px;
+  }
+
+  &__text-box {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+  }
 }
 
-.logo-box {
-  position: absolute;
-  top: 40px;
-  left: 40px;
-}
 
-.logo {
-  height: 35px;
-}
-
-.text-box {
-  position: absolute;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%,-50%);
-  text-align: center;
-}
 
 
 .heading-primary {
@@ -70,28 +73,28 @@ body {
   text-transform: uppercase;
   backface-visibility: hidden; /*This is for the animation to stop moving after it finish*/
   margin-bottom: 60px;
-}
 
-.heading-primary-main {
-  display: block; /*Transforms the span into a DIV so it append one above other and occupies the 100% of the div width*/
-  font-size: 60px;
-  font-weight: 400;
-  letter-spacing: 35px;
-  animation-name: moveInLeft;
-  animation-duration: 1s;
-  animation-timing-function: ease-out;
-  /*animation-iteration-count: 3; The animation is repeated 3 times*/
-  /*animation-delay: 3s;*/
-}
+  &--main {
+    display: block; /*Transforms the span into a DIV so it append one above other and occupies the 100% of the div width*/
+    font-size: 60px;
+    font-weight: 400;
+    letter-spacing: 35px;
+    animation-name: moveInLeft;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+    /*animation-iteration-count: 3; The animation is repeated 3 times*/
+    /*animation-delay: 3s;*/
+  }
 
-.heading-primary-sub {
-  display: block; /*Transforms the span into a DIV so it append one above other and occupies the 100% of the div width*/
-  font-size: 20px;
-  font-weight: 400;
-  letter-spacing: 15px;
-  animation-name: moveInRight;
-  animation-duration: 1s;
-  animation-timing-function: ease-out;
+  &--sub {
+    display: block; /*Transforms the span into a DIV so it append one above other and occupies the 100% of the div width*/
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 15px;
+    animation-name: moveInRight;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+  }
 }
 
 /* Animations*/
@@ -141,110 +144,66 @@ body {
 }
 /* 0% is when animation begin and 100% is the state of the animation at the end*/
 
-.btn:link,
-.btn:visited {
-  text-transform: uppercase;
-  text-decoration: none;
-  padding: 15px 40px;
-  display: inline-block; /*para que el boton se comporte como un bloque y se apende sobre los otros elementos*/
-  border-radius: 100px;
-  transition: all .2s;
-  position: relative;
+
+.btn {
+
+  &:link,
+  &:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 15px 40px;
+    display: inline-block; /*para que el boton se comporte como un bloque y se apende sobre los otros elementos*/
+    border-radius: 100px;
+    transition: all .2s;
+    position: relative;
+  }
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba($color-black, 0.2);
+
+   &::after { /*After we hover the button we call the pseudo element after*/
+      transform: scaleX(1.4) scaleY(1.6);
+      opacity: 0;
+    }
+  }
+
+  &:active {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgba($color-black, 0.2);
+  }
+
+  &--white {
+    background-color: $color-white;
+    color: $color-grey-dark;
+
+      &::after {
+        background-color: $color-white;
+      }
+  }
+
+  &::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 100px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1; /*When we overlap something this button make that the element is behind the parent*/
+    transition: all .4s;
+  }
+
+
+
+
+  /*Pseudo class is for apply clases to elements , link is to tell that our button
+  will have a link , then VISITED our button will perform an action after is clicked*/
+
+  &--animated {
+    animation: moveInBottom .5s ease-out 0.75s;
+    animation-fill-mode: backwards;
+  }
+
 }
-
-.btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(0,0,0, 0.2);
-}
-
-.btn:active {
-  transform: translateY(-1px);
-  box-shadow: 0 5px 10px rgba(0,0,0, 0.2);
-}
-
-.btn-white {
-  background-color: $color-white;
-  color: $color-grey-dark;
-}
-
-.btn::after {
-  content: "";
-  display: inline-block;
-  height: 100%;
-  width: 100%;
-  border-radius: 100px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1; /*When we overlap something this button make that the element is behind the parent*/
-  transition: all .4s;
-}
-
-.btn-white::after {
-  background-color: $color-white;
-}
-
-.btn:hover::after { /*After we hover the button we call the pseudo element after*/
-  transform: scaleX(1.4) scaleY(1.6);
-  opacity: 0;
-}
-
-/*Pseudo class is for apply clases to elements , link is to tell that our button
-will have a link , then VISITED our button will perform an action after is clicked*/
-
-.btn-animated {
-  animation: moveInBottom .5s ease-out 0.75s;
-  animation-fill-mode: backwards;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
