@@ -1,0 +1,65 @@
+.row {
+  max-width: $grid-width;
+  background-color: #eee;
+  margin: 0 auto;
+
+
+  &:not(:last-child) {
+    margin-bottom: $gutteer-vertical;// con esto le pones el marge a todas
+    // menos a la ultima row
+  }
+
+  @include clearfix
+
+  [class^="col-"] { // Todas la clases que comiencen con col- aplicar ese CSS
+    background-color: orangered;
+    float: left;
+
+    &:not(:last-child) {
+      margin-right: $gutteer-horizontal;
+    }
+  }
+
+  .col-1-of-2 {
+    width: calc((100% - #{$gutteer-horizontal}) / 2);// con esto restamos el total del
+    // width meno el espacion entre columnas
+    // Con esto calculmaos el espacion de esta columna
+    // To access a variable inside a function we use #{}
+    // mandar todo lo que tenga esta columna a la izquierda.
+  }
+
+  .col-1-of-3 {
+    width: calc((100% - 2 * #{$gutteer-horizontal}) / 3);
+  }
+
+  .col-2-of-3 {
+    width: calc( 2 * ((100% - 2 * #{$gutteer-horizontal}) / 3) + #{$gutteer-horizontal});
+  }
+
+  .col-1-of-4 {
+    width: calc((100% - 3 * #{$gutteer-horizontal}) / 4);
+  }
+
+  .col-2-of-4 {
+    width: calc( 2 * ((100% - 3 * #{$gutteer-horizontal}) / 4) + #{$gutteer-horizontal});
+  }
+
+  .col-3-of-4 {
+    width: calc( 3 * ((100% - 3 * #{$gutteer-horizontal}) / 4) + 2 * #{$gutteer-horizontal});
+  }
+
+
+
+}
+// For responsive should use REM and not PX so
+// width: 1140px; 1 REM has 10 px
+// max-width means that when is less than 114rem the space should
+// fill automatically, if screen is bigger we should adjust.
+// margin: 0 auto; to center elements horizontally inside of a block.
+// this is for adjust margin automatically whe responsive.
+
+//&:not select everything except - last child, here it will select all the
+//rows except last one.
+
+// The CSS of the columns can be anidated inside of the row because in the
+// HTML it is inside of the column
