@@ -1,0 +1,46 @@
+/* Animations*/
+
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+
+  80% {
+    transform: translateX(10px); /*En el 80% de la animacion va a estar pasado 20px del origen*/
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translateX( 100px);
+  }
+
+  80% {
+    transform: translateX(-10px); /*En el 80% de la animacion va a estar pasado 20px del origen*/
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes moveInBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+/* 0% is when animation begin and 100% is the state of the animation at the end*/
