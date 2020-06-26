@@ -12,7 +12,6 @@
   @include clearfix
 
   [class^="col-"] { // Todas la clases que comiencen con col- aplicar ese CSS
-    background-color: orangered;
     float: left;
 
     &:not(:last-child) {
