@@ -7,7 +7,7 @@
     url(../img/hero.jpg); /* We are telling that we will have 2 backgrounds first the gradient and the the image*/
   background-size: cover; /* With this the image will become responsive*/
   background-position: top; /* The image will stay at the top of the container*/
-
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
   clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
   /* Each point represent the corner of the page from left to side in clockwise*/
   position: relative;
