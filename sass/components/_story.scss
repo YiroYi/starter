@@ -15,23 +15,50 @@
   &__shape {
     width: 15rem;
     height: 15rem;
-    background-color: red;
     float: left; //mandarlo a la izquierda del texto
     -webkit-shape-outside: circle(50% at 50% 50%);
     shape-outside: circle(50% at 50% 50%);
     -webkit-clip-path: circle(50% at 50% 50%);
     clip-path: circle(50% at 50% 50%);
-    transform: translateX(-3rem) skew(12deg);; // we can move the element from the center right, left
+    transform: translateX(-3rem) skew(12deg); // we can move the element from the center right, left
+    position: relative;
   }
 
   &__img {
     height: 100%;// this is inside figure, figure is to make responsive images more easy
     //the height will occuppy the 100% of the figure space
+    transform: translateX(-4rem) scale(1.4); //scale para darle zoom
+    backface-visibily: hidden; // avoid weird behaivours on this.
+    transition: all 0.5s;
   }
 
   &__text {
     transform: skew(12deg);
   }
   // We applied skew to text and image for align them straight
+  &__caption {
+    position: absolute;
+    top: 50%; //center the thing
+    left: 50%; // center the
+    transform: translate(-50%, 20%); // to complement the above to properties
+    color: $color-white;
+    text-transform: uppercase;
+    font-size: 1.7rem;
+    text-align: center;
+    opacity: 0;
+    transition: all 0.5s;
+    backface-visibily: hidden; //remove the small glitch after the animation finished
+  }
+
+  &:hover &__caption { // After hover over story just change the &__camption
+    opacity: 1;
+    transform: translate(-50%,-50%);
+  }
+
+  &:hover &__img { // After hover over story just change the &__camption
+    transform: translateX(-4rem) scale(1);
+    filter: blur(3px) brightness(80%);
+  }
+
 
 }
