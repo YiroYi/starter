@@ -1,0 +1,37 @@
+.story {
+  width: 75%; //es el width of the card, its important that container width are in %
+  margin: 0 auto; // to center de card in the center
+  box-shadow: 0 3rem 6rem rgba($color-black, 0.1);
+  background-color: $color-white;
+  border-radius: 3px;
+  padding: 6rem;
+  padding-left: 9rem;
+  font-size: $default-font-size;
+  transform: skew(-12deg); //with this we make the card like square with angle
+
+  //After apply skew we should align everything that is inside
+
+
+  &__shape {
+    width: 15rem;
+    height: 15rem;
+    background-color: red;
+    float: left; //mandarlo a la izquierda del texto
+    -webkit-shape-outside: circle(50% at 50% 50%);
+    shape-outside: circle(50% at 50% 50%);
+    -webkit-clip-path: circle(50% at 50% 50%);
+    clip-path: circle(50% at 50% 50%);
+    transform: translateX(-3rem) skew(12deg);; // we can move the element from the center right, left
+  }
+
+  &__img {
+    height: 100%;// this is inside figure, figure is to make responsive images more easy
+    //the height will occuppy the 100% of the figure space
+  }
+
+  &__text {
+    transform: skew(12deg);
+  }
+  // We applied skew to text and image for align them straight
+
+}
