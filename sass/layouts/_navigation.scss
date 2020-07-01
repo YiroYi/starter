@@ -1,0 +1,84 @@
+.navigation {
+
+  &__checkbox {
+    display:none; // escondemos el checkbox porque con el truco de unir el input
+    // con el label cuando le den click al botton label va a seleccionar el checkbox
+    //automaticamente.
+  }
+
+  &__button {
+    background-color: $color-white;
+    height: 7rem;
+    width: 7rem;
+    position: fixed;
+    top: 6rem;
+    right: 6rem;
+    border-radius: 50%;
+    z-index: 2000;
+  }
+
+  &__background { // esto es para hace el background que va a cubrir nuestra pagina.
+    height: 6rem;
+    width: 6rem;
+    border-radius: 50%;
+    position: fixed;
+    top: 6.5rem;
+    right: 6.5rem;
+    background-image: radial-gradient($color-primary-light, $color-primary-dark);
+    z-index: 1000;
+
+    transform: scale(80);
+  }
+
+  &__nav { // con esto nuestro contenedor lo ponemos encima de todo
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 1500;
+  }
+
+  &__list {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    list-style: none;
+    text-align: center;
+  }
+
+  &__item {
+    margin: 1rem;
+
+  }
+
+  &__link {
+    &:link, // link & visited is for the normal state of the button
+    &:visited {
+      display: inline-block; //this going together eith the transform: translateX(1rem);
+      padding: 1rem 2rem;
+      font-size: 3rem;
+      font-weight: 300;
+      color: $color-white;
+      text-decoration: none;
+      text-transform: uppercase;
+      background-image: linear-gradient(120deg, transparent 0%, transparent 50%, $color-white 50%);
+      background-size: 220%;
+      transition: all 0.4s;
+
+      span {
+        margin-right: 1.5rem;
+        display: inline-block;
+      }
+    }
+
+    &:hover, // Estas dos clases es para cuando haces el hover sobre el boton
+    &:active {
+      background-position: 100%;
+      color: $color-primary;
+      transform: translateX(1rem); // mueve el ovjecto hacia la derecha
+    }
+  }
+
+}
