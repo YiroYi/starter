@@ -6,7 +6,23 @@
 }
 /* This is for reset the default css of the browser */
 html {
-  font-size: 62.5%;
+  font-size: 62.5%; // 1 rem = 10px // los REM se definen arbitrariamente, y
+                    // siempre se divide entre 16
+
+  // SIEMPRE SE DEBEN DE PONER DE MAYOR A MENOR DISPOSITIVO
+  @include respond(tab-land) { // width less than 900
+    font-size: 56.25%; // 1 rem = 9px, 9/16 = 50%
+  }
+
+
+  @include respond(tab-port) { // width less than 600
+    font-size: 50%; // 1 rem = 8px, 8/16 = 50%
+  }
+
+
+  @include respond(big-desktop) {
+    font-size: 75%; // 1 rem = 12 , 12/16 = 75%
+  }
 }
 
 body {
