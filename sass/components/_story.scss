@@ -11,6 +11,16 @@
 
   //After apply skew we should align everything that is inside
 
+  @include respond(tab-port) {
+      width: 75%;
+      padding: 4rem;
+      padding-left: 7rem;
+  }
+
+  @include respond(phone) {
+      transform: skewX(0);
+  }
+
   &__shape {
     width: 15rem;
     height: 15rem;
@@ -21,6 +31,10 @@
     clip-path: circle(50% at 50% 50%);
     transform: translateX(-3rem) skew(12deg); // we can move the element from the center right, left
     position: relative;
+
+    @include respond(phone) {
+        transform: translateX(-3rem) skew(0);
+    }
   }
 
   &__img {
@@ -33,6 +47,11 @@
 
   &__text {
     transform: skew(12deg);
+
+    @include respond(phone) {
+      transform: skewX(0);
+    }
+
   }
   // We applied skew to text and image for align them straight
   &__caption {
