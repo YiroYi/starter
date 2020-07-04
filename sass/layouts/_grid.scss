@@ -7,7 +7,15 @@
   &:not(:last-child) {
     margin-bottom: $gutteer-vertical;// con esto le pones el marge a todas
     // menos a la ultima row
+    @include respond(tab-port) {
+        margin-bottom: $gutteer-vertical-small;
+      }
   }
+
+  @include respond(tab-port) {
+        max-width: 50rem;
+        padding: 0 3rem;
+      }
 
   @include clearfix
 
@@ -16,6 +24,15 @@
 
     &:not(:last-child) {
       margin-right: $gutteer-horizontal;
+
+      @include respond(tab-port) {
+        margin-right: 0;
+        margin-bottom: $gutteer-vertical-small;
+      }
+    }
+
+    @include respond(tab-port) {
+      width: 100% !important;
     }
   }
 
