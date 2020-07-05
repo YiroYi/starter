@@ -25,12 +25,16 @@
     width: 15rem;
     height: 15rem;
     float: left; //mandarlo a la izquierda del texto
-    -webkit-shape-outside: circle(50% at 50% 50%);
-    shape-outside: circle(50% at 50% 50%);
-    -webkit-clip-path: circle(50% at 50% 50%);
-    clip-path: circle(50% at 50% 50%);
     transform: translateX(-3rem) skew(12deg); // we can move the element from the center right, left
     position: relative;
+    overflow: hidden;
+
+    @supports (clip-path: polygon(0 0)) or (-webkit-clip-path: polygon(0 0)) {
+      -webkit-clip-path: circle(50% at 50% 50%);
+      clip-path: circle(50% at 50% 50%);
+      -webkit-shape-outside: circle(50% at 50% 50%);
+          shape-outside: circle(50% at 50% 50%);
+    }
 
     @include respond(phone) {
         transform: translateX(-3rem) skew(0);
