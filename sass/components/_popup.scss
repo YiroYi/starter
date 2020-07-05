@@ -5,11 +5,16 @@
   top: 0;
   left: 0;
   background-color: rgba($color-black, .8);
-
   z-index: 9999;
   opacity: 0; //esconder el modal
   visibility: hidden; //esconder el modal
   transition: all .3s;
+
+
+  @supports(-webkit-backdrop-filter: blur(10px)) or (backdrop-filter: blur(10px)) { // Esto es para verificar que un propiedad funciona en el browser, si funciona se corre el codigo de adentro
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+  }
 
 
   &__content{
